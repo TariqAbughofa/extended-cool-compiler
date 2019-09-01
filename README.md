@@ -11,24 +11,11 @@ The original cool rules:
 ```
 Program  ::= namespacedecl+ 
 Namespacedecl ::= namespace QID { Typedecl*}
-Typedecl ::= 	classdecl
-|Interfacedecl
-|namespacedecl
+Typedecl ::= 	classdecl|Interfacedecl|namespacedecl
 Classdecl ::= [class_modifier]* class ID [ inherits QID ] [ implements QID_List ] is feature* end 
-QID	:= 	QID . ID
-|ID
-QID_List	::=	QID_List , QID 
-| QID
-Modifier  ::= PUBLIC
-				|PROTECTED
-|INTERNAL
-	 			|PRIVATE
-|STATIC
-|VIRTUAL
-				|SEALED
-				|OVERRIDE
-				|ABSTRACT
-|READONLY
+QID	:= 	QID . ID |ID
+QID_List	::=	QID_List , QID | QID
+Modifier  ::= PUBLIC|PROTECTED|INTERNAL|PRIVATE|STATIC|VIRTUAL|SEALED|OVERRIDE|ABSTRACT|READONLY
 Feature ::= [Method-modifier]* ID ( formal* ) : QID is expr;* end
 |[Method-modifier]* ID ( formal* ) : QID ;
 |[Field-modifier]* ID : QID [ <- expr ] ;
