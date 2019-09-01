@@ -7,7 +7,8 @@ It includes these steps
 4. Code Generation.
 
 The original cool rules:
-`
+
+```
 Program  ::= namespacedecl+ 
 Namespacedecl ::= namespace QID { Typedecl*}
 Typedecl ::= 	classdecl
@@ -79,5 +80,6 @@ Field-modifier::= public |protected |internal |private |static |readonly
 Method-modifier::= public |protected |internal |private |static |virtual |sealed |override |abstract
 interface-modifier::= new |public |protected |internal |private
 constructor-modifier::= public |protected |internal |private
-`
+```
+
 We added OOP, later definition.
