@@ -1,0 +1,28 @@
+namespace d {
+ class  A inherits B is
+    s:B;
+    x:Bool<-true; 
+   A(r:String):SELF_TYPE is  super(r);  end 
+   X():Void is 
+    if (((s.zX())@A).x) then
+      s<-new B(2);
+    else
+      s<-void;
+    fi;
+    end end
+  class B is
+   z:Bool<-false;
+   public B(d:Int):SELF_TYPE is end
+   public B(y:String):SELF_TYPE is end
+   protected zX():B is 
+     if (not z) then
+       return new B("K");
+     else
+       return new B(2);
+     fi; end 
+    end 
+ namespace Main {
+  class Main is
+   main():SELF_TYPE is return self; end  
+  end
+ }

@@ -1,0 +1,32 @@
+namespace outer{
+class Employee is
+name:String;
+protected hourPay:Int;
+public Employee(a:String,s:Int):SELF_TYPE is self.name<-a; self.hourPay<-s; end
+public virtual calc_salary():Int is return self.hourPay; end
+end
+
+class Full_time_emp inherits Employee is
+public Full_time_emp(a:String,s:Int):SELF_TYPE is super(a,s); end
+public override calc_salary():Int is return (self.hourPay*6*30); end
+end
+
+class Part_time_emp inherits Employee is
+hours:Int;
+public Part_time_emp(a:String,s:Int,h:Int):SELF_TYPE is super(a,s); hours<-h; end
+public override calc_salary():Int is return (self.hourPay*hours*30); end
+end
+namespace Main{
+class Main is
+main():SELF_TYPE is
+emp:Employee;
+emp<-new Employee("XXX",10000);
+IO.out_int(emp.calc_salary());
+emp<-new Full_time_emp("ahmed",12);
+IO.out_int(emp.calc_salary());
+emp<-new Part_time_emp("waleed",50,3);
+IO.out_int(emp.calc_salary());
+return self;
+end end
+}
+}

@@ -1,0 +1,27 @@
+namespace d{
+ class A inherits B is
+  h:Bool<-true;
+  c():A is
+    a:A<-new A();
+    (a@S).h<-1;
+    g:Int<-(a@S).x(); 
+    x:B<-new B();
+    (x@A).h<-true;
+     return new A(); 
+  end
+ public x():String is return "3"; end
+ end
+ class B is 
+   public d():A is return new A(); end
+  end
+ class S inherits A is
+  public h:Int<-0;
+  public x():Int is return 3; end
+  end
+
+ namespace Main {
+  class Main is
+   main():SELF_TYPE is return self; end  
+  end
+ }
+}

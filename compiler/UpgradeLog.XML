@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="LexTest">
+</Property><Property Name="Solution File" Value="C:\Users\Mujahed\Desktop\LexTest with RULE\LexTest.sln">
+</Property><Property Name="User Options File" Value="C:\Users\Mujahed\Desktop\LexTest with RULE\LexTest.suo">
+</Property><Property Name="Date" Value="Sunday, November 28, 2010">
+</Property><Property Name="Time" Value="23:30 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="LexTest.sln" Description="File successfully backed up as C:\Users\Mujahed\Desktop\LexTest with RULE\LexTest.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="LexTest.suo" Description="File successfully backed up as C:\Users\Mujahed\Desktop\LexTest with RULE\LexTest.suo.old">
+</Event><Event ErrorLevel="0" Project="LexTest" Source="LexTest\LexTest.vcproj" Description="Converting project file 'C:\Users\Mujahed\Desktop\LexTest with RULE\LexTest\LexTest.vcproj'.">
+</Event><Event ErrorLevel="1" Project="LexTest" Source="LexTest\LexTest.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="LexTest" Source="LexTest\LexTest.vcproj" Description="Done converting to new project file 'C:\Users\Mujahed\Desktop\LexTest with RULE\LexTest\LexTest.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="LexTest" Source="LexTest\LexTest.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="LexTest.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="LexTest.sln" Description="Converted">
+</Event></UpgradeLog>

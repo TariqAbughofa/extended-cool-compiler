@@ -1,0 +1,44 @@
+namespace d {
+  class A inherits B is
+  x():B is
+    return new B();
+  end
+
+   x(x:Int):B is
+     return new B (x);
+   end
+   
+  x(x:Int,z:String):B is
+    return new B(x,z);
+   end
+  
+   x(x:Int,z:String,w:Bool):B is
+    return new B(x,z,w);
+   end
+   end
+   class B  is 
+     x:Int;  z:String; w:Bool;
+   
+    public B():SELF_TYPE is
+      self.x<-0;  self.z<-""; self.w<-false;
+     end
+     
+     public B(x:Int):SELF_TYPE is
+      self.x<-x; self.z<-""; self.w<-false;
+     end
+
+     public B(x:Int,y:String):SELF_TYPE is
+     self.x<-x;  self.z<-y; self.w<-false;
+     end
+
+     public B(x:Int,z:String,w:Bool):SELF_TYPE is
+      self.x<-x; self.z<-z; self.w<-w;
+     end
+   end
+ 
+ namespace Main {
+  class Main is
+   main():SELF_TYPE is return self; end  
+  end
+ }
+ }

@@ -1,0 +1,27 @@
+namespace outer {
+class A is public z:Int<-6; end
+class Main is
+main():SELF_TYPE is
+a:A;
+if (isvoid a) then
+IO.out_string("true");
+else
+IO.out_string("false"); fi;
+
+a<-new A();
+if (isvoid a) then
+IO.out_string("true");
+else
+IO.out_string("false"); fi;
+
+a<-void;
+if (isvoid a) then
+IO.out_string("true");
+else
+IO.out_string("false"); fi;
+x:A<-new A();
+y:A<-x;
+delete x;
+y.z;
+return self;
+end end }

@@ -1,0 +1,35 @@
+namespace A {
+ namespace B {
+  class Z  is 
+    public c(e:String):Int is
+      d:Int<-2;
+      if (d>3) then
+        d<-10;
+      else
+        d<-20;
+       fi;
+      return d; end end
+   namespace A {
+     namespace B {
+       class X is
+         xv():Void is
+           d:Z;
+           v:Int<-d.c("WE"); 
+         end 
+         end
+       class Z is 
+       public c(e:Int):String is
+       d:Int<-2;
+       if (d>3) then
+        d<-10;
+       else
+        d<-20;
+       fi;
+       return "Our"; end 
+       end
+        namespace Main {
+  class Main is
+   main():SELF_TYPE is return self; end  
+  end
+ }
+       } } } }

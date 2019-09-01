@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Actions" Collapsed="true">
+    <Position X="5.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMGchAQAIAQIIGQAiQCoYgAAOCOEGAhAaAUABBAACCA=</HashCode>
+      <FileName>Actions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Const_Type" Collapsed="true">
+    <Position X="49" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAIEQ=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Node" Collapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAIAAAAAAACAAIAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Const_Node" Collapsed="true">
+    <Position X="36.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAEAAAAAAAAAABAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ID_Node" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAYAAAAABAAACACAAAAAAAAABAAAgAAAAQAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectID_Node" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIABACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Unary_Node" Collapsed="true">
+    <Position X="18.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAABAAAAABBAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Binary_Node" Collapsed="true">
+    <Position X="25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAABEAAAgABAAAAAQAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MethodSearch" Collapsed="true">
+    <Position X="47.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAABAAAAAAAAEAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FunctionCall_Node" Collapsed="true">
+    <Position X="38.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABEAABAAACAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectFuncCall_Node" Collapsed="true">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAEAABAAABAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConstructCall_Node" Collapsed="true">
+    <Position X="13.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAABAAgBAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assignment_Node" Collapsed="true">
+    <Position X="20.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAQAAAAAAAAAAAAAAAAAAAACAAAAAABAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Upcast_Node" Collapsed="true">
+    <Position X="27.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACCAAAAAAgAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Downcast_Node" Collapsed="true">
+    <Position X="31.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAADACAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IF_Node" Collapsed="true">
+    <Position X="40.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAIQAAAAAAAAAACAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WHILE_Node" Collapsed="true">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAACAAAAAAAABAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Case_Expr" Collapsed="true">
+    <Position X="47.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAQAEAAAABAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CASE_Node" Collapsed="true">
+    <Position X="22.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAIAAAAAAAAAAAAAAAAAAAAAQAAAAAAABAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Let_Node" Collapsed="true">
+    <Position X="29.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAUAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Return_Node" Collapsed="true">
+    <Position X="34" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAgAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scope" Collapsed="true">
+    <Position X="43" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACBAAAABAABAAABBAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Static_Node" Collapsed="true">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticFunc_Node" Collapsed="true">
+    <Position X="16" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAEAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AST" Collapsed="true">
+    <Position X="45.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAABAAIAAAAAAACAAAAAAAAgAACAABQA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LaterDef">
+    <Position X="40.5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAQAAACAAAAAIAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="memLater">
+    <Position X="42.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAACAAAAAgAQAAAAAAAABAAAAIAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="typeLater">
+    <Position X="44.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAACAAAAAAAAAAAAABAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Group_Node" Collapsed="true">
+    <Position X="47.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACEAAAgAQAIhAAAAACCAKAAAECAAECAAAQAAAAAE=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BinaryOp" Collapsed="true">
+    <Position X="48" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQBAAAAAABAhIAAAEAAAQEAAAAIA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UnaryOp" Collapsed="true">
+    <Position X="49" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAQAAAAEAAAAAAAAA=</HashCode>
+      <FileName>AST.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

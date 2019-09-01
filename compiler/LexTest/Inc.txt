@@ -1,0 +1,776 @@
+#include <stdlib.h>
+#include <iostream>
+#include <unistd.h>
+using namespace std;
+
+<stringError>{QUOTE} { BEGIN(INITIAL);col+=1; v+='"';
+const char * g=new char ;g=v.data();yylval.sval=(char *) g;v="";
+;}
+<stringError>.		{col+=yyleng;v.append(yytext);cout<<"LEXICAL ERROR: STRING ERROR"; }
+				{
+					if ($2->grp==UNARY)
+						$$ = new WHILE_Node($2,$4);
+					else if($2->grp==BINARY)
+					{
+						Binary_Node* tmpo=(Binary_Node*)$2;
+						if (tmpo->booleanOp())
+							$$ = new WHILE_Node(tmpo,$4);
+						else cout<<"boolean expression required in while condition\n";
+					}
+					else if ($2->grp==CONST)
+					{
+						Const_Node* tmpo=(Const_Node*)$2;
+						if (tmpo->type.type==4)
+						{
+							if (tmpo->type.bv==true)
+								cout<<"infinite loop!! droped down";
+							else cout<<"unreached loop!! droped down";
+						}
+						else cout<<"boolean expression required in while condition";
+					}
+					else	cout<<"boolean expression required in while condition";
+				}
+-------------------------------------
+ 
+----------------------------------------------------------
+
+ 
+ feature		    :	 Methodmodifier ID LP  RP COLON QID IS expr END
+					{
+					   para.clear();
+					   currVariable='\0';
+					   currMethod=new Method($2,para,$1->modi,$6->implement);
+				
+                       NameSpace *place_type=(NameSpace *) new NameSpace ();
+               if (my_check->Check_QID (currNamespace,currClass,$6->implement))
+               {
+					   if(!currClass->search_Class((Symbol *) currMethod))
+                        currClass->addLocal((Symbol *)currMethod);
+                       else
+                        {
+				      tete=new  Refuse_Add ();
+					 tete->line=line; 
+					     tete->msg="";
+					tete->msg.append("FEATURE '");
+					tete->msg.append(currMethod->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				         {
+				      tete=new  Refuse_Add ();
+					 tete->line=line; 
+					     tete->msg="RETURN TYPE UNDEFINED";
+					
+					 tete->name= $2; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				  
+					 }
+					  
+                    |Methodmodifier ID LP RP COLON QID IS expr error {yyerror("'END' KEYWORD EXPECTED");} 
+                    |Methodmodifier ID error {yyerror("'(' MISSING");}
+                    |Methodmodifier ID LP error {yyerror("')' MISSING"); }  
+                    |Methodmodifier ID LP RP COLON error {yyerror("RETURN TYPE EXPECTED"); } 
+                    |Methodmodifier ID LP RP error {yyerror("':' MISSING");}
+                    |Methodmodifier ID LP RP COLON QID error {yyerror("'IS' KEYWORD EXPECTED");}  
+                    |Methodmodifier error {yyerror("ERROR IN FEATURE DEFINATION"); } 
+                      
+				   |Modifier ID LP RP COLON QID IS expr  END
+				   
+				    {
+					  para.clear();
+					  currVariable='\0';
+					  currMethod=new Method($2,para,$1->modi,$6->implement);
+					  
+					  
+                       NameSpace *place_type=(NameSpace *) new NameSpace ();
+               if (my_check->Check_QID (currNamespace,currClass,$6->implement))
+               {
+					  
+					   if(!currClass->search_Class((Symbol *) currMethod))
+                        currClass->addLocal((Symbol *)currMethod);
+                       else
+                       {
+				     tete=new  Refuse_Add  ();
+					 tete->line=line;
+					  tete->msg="";
+					tete->msg.append("FEATURE '");
+					tete->msg.append(currMethod->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				        {
+				     tete=new  Refuse_Add  ();
+					 tete->line=line;
+					  tete->msg="RETUN TYPE UNDEFINED";
+					
+					 tete->name= $2; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				  
+				
+					} 
+					 
+				   |Modifier ID LP RP COLON QID IS expr error {yyerror("'END' KEYWORD EXPECTED");}
+				   |Modifier ID error {yyerror("'(' or ':' MISSING"); } 
+				   |Modifier ID LP error {yyerror("')' MISSING");}
+				   |Modifier ID LP RP error {yyerror("':' MISSING");}
+				   |Modifier ID LP RP COLON error {yyerror("RETURN TYPE EXPECTED");}
+                   |Modifier ID LP RP COLON QID error {yyerror("'IS' KEYWORD EXPECTED");}
+                   
+                   |ID LP RP COLON QID IS expr END
+                    
+				    {
+					  para.clear();
+					  meme.clear();
+					  currVariable='\0';
+					  currMethod=new Method($1,para,meme,$5->implement);
+					  
+				
+                       NameSpace *place_type=(NameSpace *) new NameSpace ();
+               if (my_check->Check_QID (currNamespace,currClass,$5->implement))
+               {
+					   if(!currClass->search_Class((Symbol *) currMethod))
+                        currClass->addLocal((Symbol *)currMethod);
+                       else
+                        {
+				    tete=new    Refuse_Add ();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("FEATURE '");
+					tete->msg.append(currMethod->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $1; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				          {
+				    tete=new    Refuse_Add ();
+					 tete->line=line; 
+					  tete->msg="RETURN TYPE UNDEFINED";
+					
+					 tete->name= $1; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+					 } 
+					  
+				   |ID LP RP COLON QID IS expr error {yyerror("'END' KEYWORD EXPECTED");}
+                   |ID error {yyerror("'(' or ':' MISSING");}
+                   |ID LP error {yyerror("')' MISSING");}
+                   |ID LP RP error {yyerror("':' MISSING"); }  
+                   |ID LP RP COLON error {yyerror("RETURN TYPE EXPECTED"); } 
+                   |ID LP RP COLON QID  error {yyerror("'IS' KEYWORD EXPECTED");}
+                   
+                   |Methodmodifier  ID LP nFormal RP  COLON  QID  IS  expr  END 
+                    
+				    {
+				    currVariable='\0';
+					  currMethod=new Method($2,$4->parameter,$1->modi,$7->implement);
+					  NameSpace *place_type=(NameSpace *) new NameSpace ();
+					      if ( (my_check->check_param ((Symbol *)currMethod,currNamespace,$4->parameter)) && 
+                       (my_check->Check_QID (currNamespace,currClass,$7->implement))) 
+					    {
+					   if(!currClass->search_Class((Symbol *) currMethod))
+                        currClass->addLocal((Symbol *)currMethod);
+                       else
+                        {
+				       tete=new Refuse_Add ();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("FEATURE '");
+					tete->msg.append(currMethod->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				   else
+				        {
+				       tete=new Refuse_Add ();
+					 tete->line=line; 
+					  tete->msg="RETURN TYPE UNDEFINED OR SOME PARAMETERS UNDEFINED";
+					
+					 tete->name= $2; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+					  
+				  }
+				
+					    
+                   |Methodmodifier  ID LP nFormal RP  COLON  QID  IS  expr error {yyerror("'END' KEYWORD EXPECTED");}
+                   |Methodmodifier  ID LP nFormal RP  COLON  QID  error {yyerror("'IS' KEYWORD EXPECTED");}
+                   |Methodmodifier  ID LP nFormal RP  COLON  error {yyerror("RETURN TYPE UNDEFINED");}
+                   |Methodmodifier  ID LP nFormal RP error {yyerror("':' MISSING");}
+                   |Methodmodifier  ID LP nFormal error {yyerror("')' MISSING"); } 
+                    
+                   |Modifier  ID LP nFormal RP  COLON  QID  IS  expr  END  
+                     
+                     {
+                     currVariable='\0';
+                       NameSpace *place_type=(NameSpace *) new NameSpace ();
+					  currMethod=new Method($2,$4->parameter,$1->modi,$7->implement);
+					  if 
+                       ( (my_check->Check_QID (currNamespace,currClass,$7->implement)) &&
+                       (my_check->check_param ((Symbol *)currMethod,currNamespace,$4->parameter)) )
+                       {
+					   if(!currClass->search_Class((Symbol *) currMethod))
+                        currClass->addLocal((Symbol *)currMethod);
+                       else
+                        {
+				     tete=new  Refuse_Add  ();
+					 tete->line=line;
+					  tete->msg="";
+					tete->msg.append("FEATURE '");
+					tete->msg.append(currMethod->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				         {
+				     tete=new  Refuse_Add  ();
+					 tete->line=line;
+					  tete->msg="RETURN TYPE UNDEFINED OR SOME PARAMETERS UNDEFINED";
+					 tete->name= $2; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				  
+			
+					 } 
+					                         
+                   |Modifier ID LP nFormal RP  COLON  QID  IS  expr error {yyerror("'END' KEYWORD EXPECTED");}
+                   |Modifier ID LP nFormal RP  COLON  QID error {yyerror("'IS' KEYWORD EXPECTED");}
+                   |Modifier ID LP nFormal RP  COLON  error {yyerror("RETURN TYPE EXPECTED");}
+                   |Modifier ID LP nFormal RP error {yyerror("':' MISSING"); } 
+                   |Modifier ID LP nFormal  error {yyerror("')' MISSING");}
+                  
+                   |ID LP nFormal RP  COLON  QID  IS  expr  END  
+                   
+                     {
+                       meme.clear();
+                       currVariable='\0';
+					   currMethod=new Method($1,$3->parameter,meme,$6->implement);
+					   NameSpace *place_type=(NameSpace *) new NameSpace ();
+					     if ( (my_check->Check_QID (currNamespace,currClass,$6->implement)) &&
+					     (my_check->check_param ((Symbol *)currMethod,currNamespace,$3->parameter)) )
+					     {
+					   if(!currClass->search_Class((Symbol *) currMethod))
+                        currClass->addLocal((Symbol *)currMethod);
+                       else
+                       {
+				    tete=new   Refuse_Add  ();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("FEATURE '");
+					tete->msg.append(currMethod->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $1; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				        {
+				    tete=new   Refuse_Add  ();
+					 tete->line=line; 
+					  tete->msg="RETURN TYPE UNDEFINED OR SOME PARAMETERS UNDEFINED";
+					
+					 tete->name= $1; tete->type=method;
+					 My_ref->insert_Ref(tete);
+				  }
+				 
+					 } 
+					 
+					 
+                   |ID LP nFormal RP  COLON  QID  IS  expr  error {yyerror("'END' KEYWORD EXPECTED"); } 
+                   |ID LP nFormal RP  COLON  QID  error {yyerror("'IS' KEYWORD EXPECTED");}
+                   |ID LP nFormal RP  COLON  error {yyerror("RETURN TYPE EXPECTED");} 
+                   |ID LP nFormal RP error {yyerror("':' MISSING"); } 
+                   |ID LP nFormal error {yyerror("')' MISSING"); } 
+                  
+			       |Fieldmodifier   ID  COLON  QID  ASSIGN expr 
+			       //Varibale in My Class
+			       {
+			           currMethod='\0';
+					   currVariable=new Variable($2,$4->implement,$1->modi);
+					   	   NameSpace *place_type=(NameSpace *) new NameSpace ();
+					   	   
+					   	 
+					   	   if (strcmp (*(-- $4->implement.end()),currClass->name)!=0)
+					   	    {
+					       if (my_check->Check_QID (currNamespace,currClass,$4->implement))
+					       {
+					   if(!currClass->search_Class((Symbol *) currVariable))
+                        currClass->addLocal((Symbol *)currVariable);
+                       else
+                        {
+				     tete=new  Refuse_Add  ();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("VARIABLE '");
+					tete->msg.append(currVariable->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				      {
+				     tete=new  Refuse_Add  ();
+					 tete->line=line; 
+					  tete->msg="RETURN TYPE UNDEFINED";
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  
+				
+				     }
+				     
+				     else{
+				      tete=new    Refuse_Add();
+					    tete->line=line;
+				        tete->msg="";
+						tete->msg.append(currVariable->name);
+						tete->msg.append(" USES CLASS");
+						tete->msg.append(currClass->name);
+						tete->msg.append(" WHICH IS BEING DEFINED");
+						tete->name= $2; tete->type=variable;
+					    My_ref->insert_Ref(tete);}
+					 } 
+					 
+			       |Fieldmodifier   ID  COLON  QID error {yyerror("'<-' OR '[' MISSING");}
+			       |Fieldmodifier   ID  COLON   error {yyerror("TYPE EXPECTED"); }  
+			       |Fieldmodifier   ID  error {yyerror("':' MISSING"); } 
+			       |Fieldmodifier error {yyerror("ERROR IN FEATURE DEFINATION"); } 
+			       
+			       |Fieldmodifier  ID COLON  QID  %prec X
+			        //Varibale in My Class
+			       {
+					  currVariable=new Variable($2,$4->implement,$1->modi);
+					    currMethod='\0';
+					   NameSpace *place_type=(NameSpace *) new NameSpace ();
+
+                if (strcmp (*(--$4->implement.end()),currClass->name)!=0) {
+					       if (my_check->Check_QID (currNamespace,currClass,$4->implement))
+					       {
+					   if(!currClass->search_Class((Symbol *) currVariable))
+                        currClass->addLocal((Symbol *)currVariable);
+                       else
+                        {
+				    tete=new    Refuse_Add();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("VARIABLE '");
+					tete->msg.append(currVariable->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				         {
+				    tete=new    Refuse_Add();
+					 tete->line=line; 
+					  tete->msg="TYPE UNDEFINED";
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				 
+				      }
+				      else
+				      {
+				        tete=new    Refuse_Add();
+					    tete->line=line;
+				        tete->msg="";
+						tete->msg.append(currVariable->name);
+						tete->msg.append(" USES CLASS");
+						tete->msg.append(currClass->name);
+						tete->msg.append(" WHICH IS BEING DEFINED");
+						tete->name= $2; tete->type=variable;
+					    My_ref->insert_Ref(tete);
+				       }
+					 }
+					 
+			       |Fieldmodifier  ID  COLON  QID INTValue %prec Y
+			        //Varibale in My Class
+			        {
+					   currVariable=new Variable($2,$4->implement,$1->modi);
+					     currMethod='\0';
+					   NameSpace *place_type=(NameSpace *) new NameSpace ();
+
+                          if (strcmp (*(--$4->implement.end()),currClass->name)!=0) { 
+					       if (my_check->Check_QID (currNamespace,currClass,$4->implement))
+					       {
+					   if(!currClass->search_Class((Symbol *) currVariable))
+                        currClass->addLocal((Symbol *)currVariable);
+                       else
+                        {
+				      tete=new  Refuse_Add();
+					 tete->line=line;
+					  tete->msg="";
+					tete->msg.append("VARIABLE '");
+					tete->msg.append(currVariable->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				     {
+				      tete=new  Refuse_Add();
+					 tete->line=line;
+					  tete->msg="TYPE UNDEFINED";
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  
+					 }
+					 else
+				 {
+				          tete=new  Refuse_Add();
+					    tete->line=line;
+				        tete->msg="";
+						tete->msg.append(currVariable->name);
+						tete->msg.append(" USES CLASS ");
+						tete->msg.append(currClass->name);
+						tete->msg.append(" WHICH IS BEING DEFINED");
+						tete->name= $2; tete->type=variable;
+					    My_ref->insert_Ref(tete);
+				       }
+					 } 
+			              
+			       |Modifier   ID  COLON  QID   ASSIGN expr 
+			      //Varibale in My Class
+			       {
+					  currVariable=new Variable($2,$4->implement,$1->modi);
+					    currMethod='\0';
+					   NameSpace *place_type=(NameSpace *) new NameSpace ();
+                        
+                        if (strcmp (*(--$4->implement.end()),currClass->name)!=0) { 
+                        
+					       if (my_check->Check_QID (currNamespace,currClass,$4->implement))
+					       {
+					   if(!currClass->search_Class((Symbol *) currVariable))
+                        currClass->addLocal((Symbol *)currVariable);
+                       else
+                    {
+				      tete=new  Refuse_Add();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("VARIABLE '");
+					tete->msg.append(currVariable->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				   {
+				      tete=new  Refuse_Add();
+					 tete->line=line; 
+					  tete->msg="TYPE UNDEFINED";
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+					}
+					 else
+					   
+					   {
+				         tete=new  Refuse_Add();
+					    tete->line=line;
+				        tete->msg="";
+						tete->msg.append(currVariable->name);
+						tete->msg.append(" USES CLASS ");
+						tete->msg.append(currClass->name);
+						tete->msg.append(" WHICH IS BEING DEFINED");
+						tete->name= $2; tete->type=variable;
+					    My_ref->insert_Ref(tete);
+				       }
+					 }  
+					 
+			       |Modifier   ID  COLON  QID  error {yyerror("'<-' OR '[' MISSING"); }   
+			       |Modifier   ID  COLON  error {yyerror("TYPE EXPECTED");} 
+			       |Modifier  error {yyerror("ERROR IN FEATURE DEFINATION");}
+			       |Modifier  ID  COLON QID %prec X
+			        //Varibale in My Class
+			       {
+					  currVariable=new Variable($2,$4->implement,$1->modi);
+					    currMethod='\0';
+					   NameSpace *place_type=(NameSpace *) new NameSpace ();
+
+                            if (strcmp (*(--$4->implement.end()),currClass->name)!=0) { 
+					       if (my_check->Check_QID (currNamespace,currClass,$4->implement))
+					       {
+					   if(!currClass->search_Class((Symbol *) currVariable))
+                        currClass->addLocal((Symbol *)currVariable);
+                       else
+                        {
+				    tete=new   Refuse_Add ();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("VARIABLE '");
+					tete->msg.append(currVariable->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				        {
+				    tete=new   Refuse_Add ();
+					 tete->line=line; 
+					  tete->msg="TYPE UNDEFINED";
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  
+					 }
+					 	 else
+					   
+					         {
+				        tete=new    Refuse_Add();
+					    tete->line=line;
+				        tete->msg="";
+						tete->msg.append(currVariable->name);
+						tete->msg.append(" USES CLASS ");
+						tete->msg.append(currClass->name);
+						tete->msg.append(" WHICH IS BEING DEFINED");
+						tete->name= $2; tete->type=variable;
+					    My_ref->insert_Ref(tete);
+				       }
+					 } 
+			      
+			       |Modifier  ID  COLON  QID INTValue %prec Y
+			        //Varibale in My Class
+			       {
+					  currVariable=new Variable($2,$4->implement,$1->modi);
+					   NameSpace *place_type=(NameSpace *) new NameSpace ();
+                       currMethod='\0';
+                       
+                       if (strcmp (*(--$4->implement.end()),currClass->name)!=0) { 
+					       if (my_check->Check_QID (currNamespace,currClass,$4->implement))
+					       {
+					   if(!currClass->search_Class((Symbol *) currVariable))
+                        currClass->addLocal((Symbol *)currVariable);
+                       else
+                        {
+				     tete=new  Refuse_Add();
+					 tete->line=line;
+					  tete->msg="";
+					tete->msg.append("VARIABLE '");
+					tete->msg.append(currVariable->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				        {
+				     tete=new  Refuse_Add();
+					 tete->line=line;
+					  tete->msg="TYPE UNDEFINED";
+					
+					 tete->name= $2; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+					 }
+					 	 else
+					   
+					         {
+				        tete=new   Refuse_Add ();
+					    tete->line=line;
+				        tete->msg="";
+						tete->msg.append(currVariable->name);
+						tete->msg.append(" USES CLASS ");
+						tete->msg.append(currClass->name);
+						tete->msg.append(" WHICH IS BEING DEFINED");
+						tete->name= $2; tete->type=variable;
+					    My_ref->insert_Ref(tete);
+				       }
+					 } 
+			       
+			       |ID  COLON  QID   ASSIGN expr
+			         //Variable
+			           {
+			           meme.clear();
+					    currVariable=new Variable($1,$3->implement,meme);
+					   NameSpace *place_type=(NameSpace *) new NameSpace ();
+                         currMethod='\0';
+                         
+                            if (strcmp (*(--$3->implement.end()),currClass->name)!=0) { 
+					       if (my_check->Check_QID (currNamespace,currClass,$3->implement))
+					       {
+					   if(!currClass->search_Class((Symbol *) currVariable))
+                        currClass->addLocal((Symbol *)currVariable);
+                       else
+                        {
+				    tete=new   Refuse_Add  ();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("VARIABLE '");
+					tete->msg.append(currVariable->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $1; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				        {
+				    tete=new   Refuse_Add  ();
+					 tete->line=line; 
+					  tete->msg="TYPE DEFINED";
+					
+					 tete->name= $1; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+					 }
+					  	 else
+					   
+					    {
+				      tete=new      Refuse_Add();
+					    tete->line=line;
+				        tete->msg="";
+						tete->msg.append(currVariable->name);
+						tete->msg.append(" USES CLASS ");
+						tete->msg.append(currClass->name);
+						tete->msg.append(" WHICH IS BEING DEFINED");
+						tete->name= $1; tete->type=variable;
+					    My_ref->insert_Ref(tete);
+				       }
+					 } 
+			        
+					 
+			       |ID  COLON  QID   error {yyerror("'<-' OR '[' MISSING"); } 
+			       |ID  COLON  error {yyerror("TYPE EXPECTED");}
+			       |ID  COLON  QID  %prec X
+			       			       //Varibale in My Class
+			       {
+			       meme.clear();
+					   currVariable=new Variable($1,$3->implement,meme);
+					   NameSpace *place_type=(NameSpace *) new NameSpace ();
+                        currMethod='\0';
+                        
+                            if (strcmp (*(--$3->implement.end()),currClass->name)!=0) { 
+					       if (my_check->Check_QID (currNamespace,currClass,$3->implement))
+					       {
+					   if(!currClass->search_Class((Symbol *) currVariable))
+                        currClass->addLocal((Symbol *)currVariable);
+                       else
+                         {
+				      tete=new  Refuse_Add();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("VARIABLE '");
+					tete->msg.append(currVariable->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $1; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				          {
+				      tete=new  Refuse_Add();
+					 tete->line=line; 
+					  tete->msg="TYPE UNDEFINED";
+					
+					 tete->name= $1; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  
+				 }
+				   	 else
+					   
+					         {
+				          tete=new  Refuse_Add();
+					    tete->line=line;
+				        tete->msg="";
+						tete->msg.append(currVariable->name);
+						tete->msg.append(" USES CLASS ");
+						tete->msg.append(currClass->name);
+						tete->msg.append(" WHICH IS BEING DEFINED");
+						tete->name= $1; tete->type=variable;
+					    My_ref->insert_Ref(tete);
+				       }
+					 } 
+				 
+			       |ID  COLON  QID INTValue %prec Y
+			        //Varibale in My Class
+			       {
+			       meme.clear();
+					  currVariable=new Variable($1,$3->implement,meme);
+					   NameSpace *place_type=(NameSpace *) new NameSpace ();
+                         currMethod='\0';
+                         
+                          if (strcmp (*(--$3->implement.end()),currClass->name)!=0) {
+                          
+					       if (my_check->Check_QID (currNamespace,currClass,$3->implement))
+					       {
+					   if(!currClass->search_Class((Symbol *) currVariable))
+                        currClass->addLocal((Symbol *)currVariable);
+                       else
+                         {
+				     tete=new  Refuse_Add();
+					 tete->line=line; 
+					  tete->msg="";
+					tete->msg.append("VARIABLE '");
+					tete->msg.append(currVariable->name);
+					tete->msg.append("' REDEFINATION");
+					
+					 tete->name= $1; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  }
+				  else
+				         {
+				     tete=new  Refuse_Add();
+					 tete->line=line; 
+					  tete->msg="TYPE UNDEFINED";
+					 tete->name= $1; tete->type=variable;
+					 My_ref->insert_Ref(tete);
+				  }
+				  
+				
+					 }
+					 
+					  else
+					   
+					       {
+				        tete=new   Refuse_Add ();
+					    tete->line=line;
+				        tete->msg="";
+						tete->msg.append(currVariable->name);
+						tete->msg.append(" USES CLASS ");
+						tete->msg.append(currClass->name);
+						tete->msg.append(" WHICH IS BEING DEFINED");
+						tete->name= $1; tete->type=variable;
+					    My_ref->insert_Ref(tete);
+				       }
+					 }
+			    			     
+;

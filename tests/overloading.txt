@@ -1,0 +1,15 @@
+namespace Arethmatic {
+class Main is
+sum(x:Float,y:Float):Float is return x+y; end
+sum(x:Int,y:Int):Int is return x+y; end
+sum(x:Int,y:Float):Float is return x+y; end
+sum(x:Float,y:Int):Float is return x+y; end
+main():SELF_TYPE is
+IO.out_int(sum(1,1));
+IO.out_float(sum(5.1,4.1));
+IO.out_float(sum(3.1,1));
+IO.out_float(sum(1,.44));
+return self;
+end
+end
+}

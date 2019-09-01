@@ -1,0 +1,22 @@
+﻿Build started 7/14/2013 10:22:29 PM.
+     1>Project "C:\University Study\4th year\Forth Year Second Semester\Compiler\our compiler\Compiler - Finale\compiler - cool\LexTest\LexTest.vcxproj" on node 2 (build target(s)).
+     1>PrepareForBuild:
+         Creating directory "C:\University Study\4th year\Forth Year Second Semester\Compiler\our compiler\Compiler - Finale\compiler - cool\Debug\".
+       InitializeBuildStatus:
+         Creating "Debug\LexTest.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt lex.yy.cc LexTest.cpp stdafx.cpp yacc.cpp
+         yacc.cpp
+     1>c:\users\sony\desktop\compiler - with code generate - copy - copy\lextest\yacc.y(9): fatal error C1083: Cannot open include file: 'FlexLexer.h': No such file or directory
+         stdafx.cpp
+         LexTest.cpp
+         lex.yy.cc
+     1>c:\university study\4th year\forth year second semester\compiler\our compiler\compiler - finale\compiler - cool\lextest\lex.yy.cc(25): fatal error C1083: Cannot open include file: 'unistd.h': No such file or directory
+         Generating Code...
+     1>FileTracker : error FTK1013: could not find unicode byte order marker in the file tracking log file: C:\University Study\4th year\Forth Year Second Semester\Compiler\our compiler\Compiler - Finale\compiler - cool\LexTest\Debug\CL.read.1.tlog. The tracking data is invalid.
+         
+     1>Done Building Project "C:\University Study\4th year\Forth Year Second Semester\Compiler\our compiler\Compiler - Finale\compiler - cool\LexTest\LexTest.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.35

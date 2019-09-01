@@ -1,0 +1,62 @@
+//static array
+namespace outer {
+class A is end
+class Main is
+a:A;
+main():SELF_TYPE is
+x:Int[10]; i:Int;
+while (i<10) loop
+x[i]<-i;
+IO.out_int(x[i]);
+i<-i+1;
+pool;
+i<-0; sum:Int<-0;
+while (i<10) loop
+sum<-sum+x[i];
+i<-i+1;
+pool;
+IO.out_int(sum);
+return self;
+end
+end
+}
+
+//dynamic array
+namespace outer {
+class Main is
+w:Bool[];
+main():SELF_TYPE is
+w:Int[];
+w<-new Int[4];
+w[3]<-44;
+IO.out_int(w[3]);
+w<-new Int[11];
+IO.out_int(w[10]);
+x:Int[3];
+x<-new Int[1];
+return self;
+end
+end
+}
+
+namespace outer {
+class A is public q:Int; public virtual x():Void is
+IO.out_string(self.type_name()); end end
+class B inherits A is 
+public override x():Void is
+IO.out_string("qq"); end end
+class Main is
+a:A;
+main():SELF_TYPE is
+x:A[]; i:Int; z:Int;
+z<-IO.in_int();
+x<-new A[z];
+while (i<z) loop
+x[i] <- new B();
+x[i].x();
+i<-i+1;
+pool;
+return self;
+end
+end
+}

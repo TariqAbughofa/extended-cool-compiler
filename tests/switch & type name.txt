@@ -1,0 +1,25 @@
+namespace swit{
+class A is end
+class B inherits A is end
+class C inherits A is end
+class D inherits A is end
+class X inherits D is end
+
+class Main is
+main():SELF_TYPE is
+x:Int;
+x<-IO.in_int();
+a:A;
+switch x of
+case 1 => a<-new A();
+case 2 => a<-new B();
+case 3 => a<-new C();
+case 4 => a<-new D();
+case 5 => a<-new X();
+esac;
+-- if x=0 exeption??
+IO.out_string(a.type_name());
+return self;
+end
+end
+}

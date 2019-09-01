@@ -1,0 +1,47 @@
+namespace TimeCheck{
+class Time is
+private hour:Int;
+private minute:Int;
+private second:Int;
+public Time():SELF_TYPE is hour <-0; minute<-0; second<-0; end
+public setTime(h:Int,m:Int,s:Int):Void is
+if (h>=0 and h<24) then
+	self.hour<-h;
+else
+	self.hour<-0;
+	IO.out_string("wrong hour");
+fi;
+if (m>=0 and m<60) then
+	self.minute<-m;
+else
+	self.minute<-0;
+	IO.out_string("wrong minute");
+fi;
+if (s>=0 and s<60) then
+	self.second<-s;
+else
+	self.second<-0;
+	IO.out_string("wrong hour");
+fi;
+end
+public printTime():Void is
+IO.out_int(self.hour);
+IO.out_string(" : ");
+IO.out_int(self.minute);
+IO.out_string(" : ");
+IO.out_int(self.second);
+end
+end
+
+class Main is
+main():SELF_TYPE is
+x:Int; y:Int; z:Int;
+x<-IO.in_int();
+y<-IO.in_int();
+z<-IO.in_int();
+time:Time<-new Time();
+time.setTime(x,y,z);
+time.printTime();
+return self;
+end end
+}

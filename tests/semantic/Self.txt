@@ -1,0 +1,44 @@
+namespace g { 
+ class A inherits B is 
+   a:B;
+   d():Int is
+     return i;  
+   end
+   public x():Void is
+     z:A<-(a@A);
+     z.d();
+    end
+  end 
+namespace f {
+  class B inherits g.B is 
+    f(l:Int):Bool is
+      k:Int<-self.s();
+      if (self.s(k)=4) then
+         return true;
+      else
+         return false;
+       fi;
+     end
+    end 
+}
+ class B is
+   z:Int<-3;
+   protected i:Int<-3; 
+   protected s():Int is
+      return self.z;
+    end
+   protected s(k:Int):Int is
+     if (k>4) then
+       self.z<-4;
+      else
+        self.z<-0;
+     fi;
+      return self.z;
+    end   
+   end 
+   namespace Main {
+  class Main is
+   main():SELF_TYPE is return self; end  
+  end
+ }
+}

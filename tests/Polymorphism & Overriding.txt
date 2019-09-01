@@ -1,0 +1,21 @@
+//object of class
+namespace outer{
+class A is virtual public x():Void is IO.out_string("A"); end virtual public  y():Void is IO.out_string("A"); end end
+class B inherits A is override public x():Void is IO.out_string("B"); end end
+class C inherits B is override public x():Void is IO.out_string("C"); end end
+class Z inherits B is override public x():Void is IO.out_string("Z"); end end
+class D inherits C is end
+class E inherits D is end
+class Main is main():SELF_TYPE is q:A; q<-new D(); q.x(); return self; end end
+}
+
+//object of interface
+namespace d {
+interface A {x():Void;}
+interface B inherits A {y():Void;}
+class C implements B is y():Void is end x():Void is end end
+class D implements A is x():Void is end end 
+class E inherits D is end
+class W inherits E is end
+class Main is main():SELF_TYPE is q:A; q<-new D(); q.x(); return self; end end
+}

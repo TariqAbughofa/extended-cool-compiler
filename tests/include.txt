@@ -1,0 +1,3 @@
+include	c:\\j.txt
+namespace j{
+class j is d end}

@@ -1,0 +1,19 @@
+namespace outer{
+class j is static public x:Int; end
+class jj is public i:j;end
+class jjj is public ii:jj; end
+class jjjj is public iii:jjj; end
+class Main is
+static k:jjjj<-new jjjj();
+main():SELF_TYPE is
+outer.Main.k.iii <- new jjj();
+outer.Main.k.iii.ii <- new jj();
+outer.Main.k.iii.ii.i <- new j();
+outer.Main.k.iii.ii.i.x<-123;
+IO.out_int(outer.j.x);
+(new outer.j()).x <- 33;
+IO.out_int(outer.j.x);
+return self;
+end
+end
+}
