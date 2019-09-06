@@ -1,6 +1,6 @@
 # extended-cool-compiler
-An extended compiler for the cool programming language
-It includes these steps
+An extended compiler for the cool programming language using flex, bison and C++.
+It includes the ffull compiler flow:
 1. Lexical Analysis.
 2. Syntax Analysis.
 3. Semantic Analysis.
@@ -69,4 +69,4 @@ interface-modifier::= new |public |protected |internal |private
 constructor-modifier::= public |protected |internal |private
 ```
 
-We added OOP, later definition.
+We added OOP features and later definition.
